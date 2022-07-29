@@ -1,0 +1,94 @@
+<html>
+
+<head>
+    <title>Slideshow</title>
+    <link rel='stylesheet' href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rowdies&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1>Scientists</h1>
+    <div class="slideshow">
+        <img src='arrow.png' class='icon' id='previous-icon'>
+      
+      <div class='slide' id='slide1'>
+        <span class="slide-text">1. Nikola Tesla</span>
+        <img src="tesla.jpeg" class='slide-image'>
+      </div>
+      <div class='slide' id='slide2'>
+        <span class="slide-text">2. Albert Einstein</span>
+        <img src='einstein.jpg' class='slide-image'>
+      </div>
+      <div class='slide' id='slide3'>
+        <span class="slide-text">3. Isaac Newton</span>
+        <img src="newton.jpg" class='slide-image'>
+      </div>
+      <div class='slide' id='slide4'>
+        <span class="slide-text">4. Lady Ada Lovelace</span>
+        <img src='ada.png' class='slide-image'>
+      </div>
+       <div class='slide' id='slide5'>
+        <span class="slide-text">5. Madame Marie Curie</span>
+        <img src='curie.jpg' class='slide-image'>
+      </div>
+      <img src='arrow.png' class='icon' id='next-icon'>
+    </div>
+  <div class="links">
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+    <button>5</button>
+  </div>
+    <script>
+    
+      
+      var slides = $('.slide');
+      var currentSlide = 1;
+      
+      changeSlide();
+      
+      function changeSlide() { 
+        $('.slide').css('opacity',0);
+        $('#slide'+currentSlide).animate({
+          'opacity':1
+        }, 500);
+      }
+      
+      function previous()  {
+        if(currentSlide > 1) {
+          currentSlide = currentSlide - 1;
+        } else {
+          currentSlide = slides.length;
+        }
+        changeSlide();
+      }
+      
+      function goto(event0bj) {
+        var clickedBtn = event0bj.currentTarget;
+        var clickedText = $(clickedBtn).text();
+        currentSlide = parseInt(clickedText);
+        changeSlide();
+      }
+      
+      function next(){
+        if(currentSlide < slides.length){
+          currentSlide = currentSlide + 1;
+        } else {
+          currentSlide = 1;
+        }
+        changeSlide();
+      }
+      
+      $('#next-icon').click(next);
+      $('#previous-icon').click(previous);
+      
+      $('button').click(goto);
+      
+      
+    
+    </script>
+</body>
+
+</html><script type="application/javascript" src="/share.js"></script>
